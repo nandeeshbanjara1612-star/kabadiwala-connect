@@ -1,0 +1,184 @@
+{
+  "projectName": "Kabadiwala Connect - Collector Dashboard",
+  "currentState": "Development prototype \u2014 frontend and Express REST API implemented; backend persistence and production authentication are still required.",
+  "agentName": "OpenAI ChatGPT",
+  "lastUpdated": "2026-09-07T12:00:00+05:30",
+  "projectStructure": {
+    "root": [
+      ".env.example",
+      ".gitignore",
+      "index.html",
+      "metadata.json",
+      "package.json",
+      "server.ts",
+      "tsconfig.json",
+      "vite.config.ts",
+      "project-context.json",
+      "README.md"
+    ],
+    "docs": [
+      "docs/API_ENDPOINTS.md",
+      "docs/GIT_WORKFLOW.md"
+    ],
+    "src": [
+      "src/main.tsx",
+      "src/App.tsx",
+      "src/index.css",
+      "src/types.ts"
+    ],
+    "src/api": [
+      "src/api/client.ts",
+      "src/api/authApi.ts",
+      "src/api/collectorApi.ts",
+      "src/api/pickupApi.ts",
+      "src/api/passportApi.ts",
+      "src/api/transactionApi.ts",
+      "src/api/notificationApi.ts",
+      "src/api/locationApi.ts"
+    ],
+    "src/context": [
+      "src/context/AuthContext.tsx",
+      "src/context/DashboardContext.tsx"
+    ],
+    "src/components": [
+      "src/components/Sidebar.tsx",
+      "src/components/TopHeader.tsx",
+      "src/components/WelcomeSection.tsx",
+      "src/components/MetricCards.tsx",
+      "src/components/NearbyPickupsCard.tsx",
+      "src/components/ActivePickupCard.tsx",
+      "src/components/RecentActivityCard.tsx",
+      "src/components/NotificationsDrawer.tsx",
+      "src/components/CompletePickupModal.tsx",
+      "src/components/AuthModal.tsx"
+    ],
+    "src/components/views": [
+      "src/components/views/DashboardView.tsx",
+      "src/components/views/PickupRequestsView.tsx",
+      "src/components/views/MyPickupsView.tsx",
+      "src/components/views/WastePassportView.tsx",
+      "src/components/views/TransactionsView.tsx",
+      "src/components/views/NotificationsView.tsx",
+      "src/components/views/ProfileView.tsx",
+      "src/components/views/SupportView.tsx"
+    ]
+  },
+  "newFiles": [
+    "server.ts",
+    "docs/API_ENDPOINTS.md",
+    "project-context.json",
+    "src/types.ts",
+    "src/api/client.ts",
+    "src/api/authApi.ts",
+    "src/api/collectorApi.ts",
+    "src/api/pickupApi.ts",
+    "src/api/passportApi.ts",
+    "src/api/transactionApi.ts",
+    "src/api/notificationApi.ts",
+    "src/api/locationApi.ts",
+    "src/context/AuthContext.tsx",
+    "src/context/DashboardContext.tsx",
+    "src/components/Sidebar.tsx",
+    "src/components/TopHeader.tsx",
+    "src/components/WelcomeSection.tsx",
+    "src/components/MetricCards.tsx",
+    "src/components/NearbyPickupsCard.tsx",
+    "src/components/ActivePickupCard.tsx",
+    "src/components/RecentActivityCard.tsx",
+    "src/components/NotificationsDrawer.tsx",
+    "src/components/CompletePickupModal.tsx",
+    "src/components/AuthModal.tsx",
+    "src/components/views/DashboardView.tsx",
+    "src/components/views/PickupRequestsView.tsx",
+    "src/components/views/MyPickupsView.tsx",
+    "src/components/views/WastePassportView.tsx",
+    "src/components/views/TransactionsView.tsx",
+    "src/components/views/NotificationsView.tsx",
+    "src/components/views/ProfileView.tsx",
+    "src/components/views/SupportView.tsx",
+    "docs/GIT_WORKFLOW.md"
+  ],
+  "modifiedFiles": [
+    "package.json",
+    "metadata.json",
+    "index.html",
+    "src/App.tsx",
+    "README.md",
+    "project-context.json"
+  ],
+  "removedFiles": [],
+  "apiRequirements": {
+    "status": "Fully Implemented",
+    "endpoints": [
+      "POST /api/auth/login",
+      "POST /api/auth/register",
+      "GET /api/auth/me",
+      "POST /api/auth/logout",
+      "GET /api/collectors/me",
+      "PATCH /api/collectors/me",
+      "GET /api/collectors/me/dashboard",
+      "GET /api/collectors/me/active-pickup",
+      "PATCH /api/collectors/me/availability",
+      "GET /api/pickups/nearby",
+      "GET /api/pickups/my",
+      "GET /api/pickups/:id",
+      "POST /api/pickups/:id/accept",
+      "POST /api/pickups/:id/reject",
+      "PATCH /api/pickups/:id/status",
+      "POST /api/pickups/:id/complete",
+      "GET /api/passports",
+      "GET /api/passports/:id",
+      "GET /api/transactions",
+      "GET /api/transactions/:id",
+      "GET /api/notifications",
+      "PATCH /api/notifications/:id/read",
+      "POST /api/notifications/mark-all-read"
+    ]
+  },
+  "databaseRequirements": {
+    "persistence": "Express in-memory data store with RESTful controller persistence and client-side token management",
+    "tables": [
+      "users",
+      "collectors",
+      "pickups",
+      "waste_passports",
+      "transactions",
+      "notifications",
+      "activity_logs"
+    ]
+  },
+  "authenticationRequirements": {
+    "model": "Single Source of Truth (currentUser / currentCollector)",
+    "tokenHandling": "Bearer token stored in localStorage (kc_auth_token)",
+    "noFakeDataRule": "Enforced strictly. No hardcoded fictional names (Mahesh, Ramesh, etc.). Honest empty states when unauthenticated."
+  },
+  "completedFeatures": [
+    "100% preservation of Kabadiwala Connect visual brand and dashboard layout",
+    "Dynamic Welcome greeting using authenticated user's real name",
+    "Dynamic metric cards: Today's Earnings, Completed Pickups, Trust Score, Total Pickups",
+    "Dynamic Nearby Pickup Requests with functional Accept and Reject handlers",
+    "Active Pickup management with lifecycle status progression (ACCEPTED -> ON_THE_WAY -> ARRIVED -> COLLECTING -> COMPLETED)",
+    "Modal to verify measured scrap weights by category and compute live payout",
+    "Automated creation of verified Waste Passports, UPI Transactions, and Notifications upon pickup completion",
+    "Verifiable digital Waste Passport certificates with QR and CO2/water/energy impact metrics",
+    "UPI Transactions financial ledger with live status",
+    "Real-time notifications drawer and count badge with mark-as-read",
+    "Collector availability toggle (AVAILABLE, BUSY, OFFLINE)",
+    "Browser GPS detection and live location reporting",
+    "Authenticated collector profile view and editing capability"
+  ],
+  "pendingWork": [
+    "Create Git repository and establish main/develop team workflow",
+    "Replace Express in-memory Maps with persistent database storage",
+    "Implement production-grade authentication and authorization",
+    "Add automated frontend and API tests",
+    "Harden request validation, rate limiting, security headers, logging, and error handling",
+    "Keep docs/API_ENDPOINTS.md synchronized with the API implementation",
+    "Keep project-context.json updated after significant work"
+  ],
+  "knownIssues": [
+    "Server data is stored in memory and is lost on restart",
+    "Current authentication/token handling is suitable for development only",
+    "Production security and persistence controls are not yet complete"
+  ]
+}

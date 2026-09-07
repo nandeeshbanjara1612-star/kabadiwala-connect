@@ -1,0 +1,6 @@
+{
+  "name": "Kabadiwala Connect - Collector Dashboard",
+  "description": "Functional, real-time data-driven Collector Dashboard for Kabadiwala Connect waste management ecosystem.",
+  "requestFramePermissions": ["geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
